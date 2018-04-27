@@ -26,7 +26,7 @@ class AlbumTableViewCell: UITableViewCell {
     }
     
     func configureAlbum(album:Album) {
-        albumName.text  = album.name
+        albumName.text  = "Name: " + album.name
        
         if album.availableCountriesArray.count > 5 {
             availableIn.text =  "Available in : " + album.availableCountriesArray.joined(separator: ",")
@@ -36,6 +36,10 @@ class AlbumTableViewCell: UITableViewCell {
         guard let url = URL(string:album.albumImageUrl) else {
             return
         }
+        albumImage.layer.shadowColor    = UIColor.black.cgColor
+        albumImage.layer.shadowOpacity  = 0.5
+        albumImage.layer.shadowOffset   = CGSize.zero
+        albumImage.layer.shadowRadius   = 35
         albumImage.af_setImage(withURL:url)
     }
 }

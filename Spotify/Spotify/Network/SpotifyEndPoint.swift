@@ -77,7 +77,7 @@ extension SpotifyEndPoint:SpotifyApiEndPoint {
     var customHeaders:[String:String]? {
         switch self {
         default:
-            return  ["Authorization": "Bearer BQCTR2myM6gnSJr2CvIEq8fvsBWNIkqynaX0Md8K4SPDCaMduHwJIbVe71YxITsS1AzLIZkk3J0OqAFAWvUgLwvvbKxG-JwWmyw5CkigTEgrNZ48gI2B2oyl-zgZG9yTFrDYHslZv6J6Ruge","Content-Type":"application/json"]
+            return  ["Authorization": "Bearer BQDxPKdVQqYrH7jwRBPbOVjGbxpiSL14snO3m2bkX-mSW_pVAhIBa--SFUa03ezZOqfr7fnxLSHbrAAJ992ETjeOyoe9L6CEbmHpYFAjZ9tnBVeDn_KtFlwNkk8B2509q6b6mNzSBh8xVDeX","Content-Type":"application/json"]
         }
     }
     
