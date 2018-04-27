@@ -21,6 +21,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="stD-w4-Do1">
                                 <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="xnY-bF-iqw">
                                 <rect key="frame" x="0.0" y="64" width="375" height="56"/>
@@ -47,6 +48,7 @@
                         <outlet property="resultsTableView" destination="stD-w4-Do1" id="ihG-eT-5r0"/>
                         <outlet property="searchBar" destination="xnY-bF-iqw" id="iDB-4P-SzE"/>
                         <outlet property="searchDisplayController" destination="zhY-6m-3zu" id="cxe-aX-Vhf"/>
+                        <segue destination="tdJ-sf-7v5" kind="show" identifier="detailSegue" id="0DX-PY-d9w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -60,6 +62,64 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="919" y="224"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="lG7-6o-Ib1">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tdJ-sf-7v5" customClass="DetailViewController" customModule="Spotify" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ivP-T7-hP0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dzf-Sx-hfr">
+                                <rect key="frame" x="123" y="101" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="6dV-sj-Is2"/>
+                                    <constraint firstAttribute="height" constant="128" id="aNO-Xa-Y0r"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="64"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDD-Ei-DgV">
+                                <rect key="frame" x="20" y="296" width="335" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="AIC-SC-uT3"/>
+                                </constraints>
+                                <state key="normal" title="Listen on spotify">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="35"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="ListenOfSpotifyAction:" destination="tdJ-sf-7v5" eventType="touchUpInside" id="P4J-i8-rdB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Dzf-Sx-hfr" firstAttribute="top" secondItem="3Jd-qL-Nkw" secondAttribute="top" constant="37" id="PHq-iy-RZf"/>
+                            <constraint firstItem="IDD-Ei-DgV" firstAttribute="top" secondItem="Dzf-Sx-hfr" secondAttribute="bottom" constant="67" id="Y4g-kp-sfU"/>
+                            <constraint firstItem="3Jd-qL-Nkw" firstAttribute="trailing" secondItem="IDD-Ei-DgV" secondAttribute="trailing" constant="20" id="dr9-S8-i6b"/>
+                            <constraint firstItem="IDD-Ei-DgV" firstAttribute="leading" secondItem="3Jd-qL-Nkw" secondAttribute="leading" constant="20" id="qS6-yL-N5l"/>
+                            <constraint firstItem="Dzf-Sx-hfr" firstAttribute="centerX" secondItem="ivP-T7-hP0" secondAttribute="centerX" id="xrQ-XQ-iOG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3Jd-qL-Nkw"/>
+                    </view>
+                    <connections>
+                        <outlet property="albumImage" destination="Dzf-Sx-hfr" id="GyE-Qk-QCB"/>
+                        <outlet property="albumLink" destination="IDD-Ei-DgV" id="2u2-UW-iuE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3pA-XK-OeN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1696.8" y="223.53823088455775"/>
         </scene>
         <!--Base Navigation View Controller-->
         <scene sceneID="1Ul-Wa-Ojv">

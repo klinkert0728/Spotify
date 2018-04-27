@@ -16,6 +16,7 @@ class ViewController: BaseUIViewController {
     @IBOutlet weak var resultsTableView: UITableView!
     var artistResult    = [Artist]()
     var albums          = [Album]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
@@ -60,12 +61,22 @@ class ViewController: BaseUIViewController {
                 SVProgressHUD.dismiss()
             }, errorCallback: { (error) in
                 SVProgressHUD.showInfo(withStatus: error.localizedDescription)
+                self.resultsTableView.reloadData()
             })
         }, errorCallback: { error in
+            self.artistResult.removeAll()
+            self.albums.removeAll()
+            self.resultsTableView.reloadData()
             SVProgressHUD.showInfo(withStatus: error.localizedDescription)
         })
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailSegue" {
+            let nextVc = segue.destination as? DetailViewController
+            nextVc?.album = sender as? Album
+        }
+    }
 }
 
 
@@ -125,18 +136,9 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             let currentAlbum = albums[indexPath.row]
-            guard let albumLink = URL(string:currentAlbum.link) else {
-                return
-            }
-            presentSafariViewController(url:albumLink)
+            performSegue(withIdentifier: "detailSegue", sender: currentAlbum)
         }
-    }
-    
-    func presentSafariViewController(url:URL) {
-        let controller = SFSafariViewController(url: url)
-        self.present(controller, animated: true, completion: nil)
-        controller.delegate = self
-    }
+    }    
 }
 
 //MARK: scroll delegate
@@ -184,9 +186,4 @@ extension ViewController: UISearchBarDelegate {
     }
 }
 
-//MARK: SafariView Controller Delegate
-extension ViewController:SFSafariViewControllerDelegate {
-    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-}
+

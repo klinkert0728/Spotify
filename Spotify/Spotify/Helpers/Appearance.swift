@@ -17,7 +17,7 @@ class Appearance: NSObject {
     
     class func configureNavBarTitleFont() {
         
-            UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont.systemFont(ofSize: 18)]
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: UIFont.systemFont(ofSize: 18)]
     }
     
     class func colorNavigationBar(color:UIColor, navigationBar: UINavigationBar?){
