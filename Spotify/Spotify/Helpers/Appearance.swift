@@ -53,7 +53,7 @@ class Appearance: NSObject {
         
     }
     
-    class func barButtonWithImage(image: UIImage?, target: AnyObject?, color:UIColor = UIColor.white, action: Selector) -> UIBarButtonItem{
+    class func barButtonWithImage(image: UIImage?, target: Any?, color:UIColor = UIColor.white, action: Selector) -> UIBarButtonItem{
         
         let but: UIButton = UIButton(type: UIButtonType.custom) as UIButton
         but.frame = CGRect(x:0, y:0, width:70, height:30)
@@ -67,7 +67,7 @@ class Appearance: NSObject {
         
     }
     
-    class func barButtonWithTitle(title: String?, target: AnyObject?, action: Selector) -> UIBarButtonItem {
+    class func barButtonWithTitle(title: String?, target: Any?, action: Selector) -> UIBarButtonItem {
         
         let but: UIButton       = UIButton(type: UIButtonType.custom) as UIButton
         but.frame               = CGRect(x:0, y:0, width:50, height:30)
@@ -83,7 +83,7 @@ class Appearance: NSObject {
         return barButton
     }
     
-    class func barButtonWithTitle(title: String?, textColor: UIColor, target: AnyObject?, action: Selector) -> UIBarButtonItem{
+    class func barButtonWithTitle(title: String?, textColor: UIColor, target: Any?, action: Selector) -> UIBarButtonItem{
         
         let but: UIButton = UIButton(type: UIButtonType.custom) as UIButton
         but.frame = CGRect(x:0, y:0, width:50, height:30)
@@ -106,7 +106,7 @@ extension UIColor {
     
     
     class var primaryColor:UIColor {
-        return UIColor(hex: "#FF5722")
+        return UIColor(hex: "#1db954")
     }
     
     

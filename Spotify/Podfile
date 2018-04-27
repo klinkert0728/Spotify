@@ -2,6 +2,7 @@
 # platform :ios, '9.0'
 
 target 'Spotify' do
+  inhibit_all_warnings!
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
@@ -10,6 +11,7 @@ target 'Spotify' do
   pod 'Alamofire', '~> 4.7'
   pod 'RealmSwift'
   pod 'AlamofireImage', '~> 3.3'
+  pod 'SVProgressHUD'
   # Pods for Spotify
 
   target 'SpotifyTests' do

@@ -13,9 +13,9 @@ import Alamofire
 import RealmSwift
 
 
-class DKHAPIClient {
-    static var sharedClient: DKHAPIClient {
-        return DKHAPIClient()
+class SpotifyClient {
+    static var sharedClient: SpotifyClient {
+        return SpotifyClient()
     }
     
     func requestObject<T:Object>(endpoint: SpotifyEndPoint,keyPath:String? = nil ,completionHandler:@escaping (_ object:T) ->(),errorClosure:@escaping (_ error:Error)->()) where T : Mappable {
@@ -34,16 +34,17 @@ class DKHAPIClient {
                     return
                 }
                 
-                if let statusCode = dict["statusCode"] as? Int {
-                    if let message = dict["message"] as? String {
-                        
-                        let newError = NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey:message])
-                        
-                        errorClosure(newError)
-                    }
-                    else {
-                        let newError = NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey: "Error:  Http code: \(statusCode)"])
-                        errorClosure(newError)
+                if let errorDict = dict["error"] as? [String:Any] {
+                    if let statusCode = errorDict["status"]  as?  Int {
+                        if let message = errorDict["message"] as? String {
+                            let newError = NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey:message])
+                            
+                            errorClosure(newError)
+                        }
+                        else {
+                            let newError = NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey: "Error:  Http code: \(statusCode)"])
+                            errorClosure(newError)
+                        }
                     }
                 }
             }
@@ -66,16 +67,17 @@ class DKHAPIClient {
                     return
                 }
                 
-                if let statusCode = dict["statusCode"] as? Int {
-                    if let message = dict["message"] as? String {
-                        
-                        let newError = NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey:message])
-                        
-                        errorClosure(newError)
-                    }
-                    else {
-                        let newError = NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey: "Error:  Http code: \(statusCode)"])
-                        errorClosure(newError)
+                if let errorDict = dict["error"] as? [String:Any] {
+                    if let statusCode = errorDict["status"]  as?  Int {
+                        if let message = errorDict["message"] as? String {
+                            let newError = NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey:message])
+
+                            errorClosure(newError)
+                        }
+                        else {
+                            let newError = NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey: "Error:  Http code: \(statusCode)"])
+                            errorClosure(newError)
+                        }
                     }
                 }
             }
@@ -96,16 +98,17 @@ class DKHAPIClient {
                     return
                 }
                 
-                if let statusCode = dict["statusCode"] as? Int {
-                    if let message = dict["message"] as? String {
-                        
-                        let newError = NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey:message])
-                        
-                        errorClosure(newError)
-                    }
-                    else {
-                        let newError = NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey: "Error:  Http code: \(statusCode)"])
-                        errorClosure(newError)
+                if let errorDict = dict["error"] as? [String:Any] {
+                    if let statusCode = errorDict["status"]  as?  Int {
+                        if let message = errorDict["message"] as? String {
+                            let newError = NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey:message])
+                            
+                            errorClosure(newError)
+                        }
+                        else {
+                            let newError = NSError(domain: "", code: statusCode, userInfo: [NSLocalizedDescriptionKey: "Error:  Http code: \(statusCode)"])
+                            errorClosure(newError)
+                        }
                     }
                 }
             }

@@ -27,7 +27,8 @@ extension SpotifyApiEndPoint {
 
 enum SpotifyEndPoint {
     case login(email:String,password:String)
-    case search(query:String)
+    case searchArtist(query:String)
+    case searchArtistAlbum(artistId:String)
    
 }
 
@@ -45,8 +46,10 @@ extension SpotifyEndPoint:SpotifyApiEndPoint {
         switch self {
         case .login(email: _, password: _):
             return "session"
-        default:
-            return "json"
+        case .searchArtist(query: _):
+            return "search"
+        case .searchArtistAlbum(artistId: let id):
+            return "artists/\(id)/albums"
         }
         
     }
@@ -64,6 +67,8 @@ extension SpotifyEndPoint:SpotifyApiEndPoint {
         switch self {
         case .login(email: let email, password: let password):
             return ["email":email,"password":password]
+        case .searchArtist(query: let query):
+            return ["q":query,"type":"artist"]
         default:
             return [:]
         }
@@ -72,13 +77,15 @@ extension SpotifyEndPoint:SpotifyApiEndPoint {
     var customHeaders:[String:String]? {
         switch self {
         default:
-            return  ["Authorization": "Bearer BQDo3BU4Cxr7ODfA3r3Z22psZtjKTCf4tdOIZVtnx1nghrj3tls6-tZHoWL2Ars3UeO4_F7myeVALMvg63pJKGgEf3Mxh13zx6iAUYe-HUJcxDdVRNZ8KTDDOU-zfn50lX7kpHgf5UX_QBzK","Content-Type":"application/json"]
+            return  ["Authorization": "Bearer BQCTR2myM6gnSJr2CvIEq8fvsBWNIkqynaX0Md8K4SPDCaMduHwJIbVe71YxITsS1AzLIZkk3J0OqAFAWvUgLwvvbKxG-JwWmyw5CkigTEgrNZ48gI2B2oyl-zgZG9yTFrDYHslZv6J6Ruge","Content-Type":"application/json"]
         }
     }
     
     var parameterEncoding:ParameterEncoding {
         
         switch self {
+        case .searchArtist(query: _):
+            return URLEncoding.default
         default:
             return JSONEncoding.default
         }

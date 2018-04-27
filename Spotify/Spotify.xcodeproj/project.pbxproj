@@ -26,6 +26,9 @@
 		9682D7BD209283AC0045344E /* ArtistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9682D7BB209283AC0045344E /* ArtistTableViewCell.xib */; };
 		9682D7C1209283C70045344E /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9682D7BF209283C70045344E /* EmptyTableViewCell.swift */; };
 		9682D7C2209283C70045344E /* EmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9682D7C0209283C70045344E /* EmptyTableViewCell.xib */; };
+		9682D7C4209287C40045344E /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9682D7C3209287C40045344E /* Album.swift */; };
+		96CE00362092D5AC0067D9C8 /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CE00342092D5AC0067D9C8 /* AlbumTableViewCell.swift */; };
+		96CE00372092D5AC0067D9C8 /* AlbumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96CE00352092D5AC0067D9C8 /* AlbumTableViewCell.xib */; };
 		AD31FC48F681BF426850B34F /* Pods_SpotifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 939DE7DB4CA9CB1C84AEDCEE /* Pods_SpotifyTests.framework */; };
 		B393570487F877CFA171CFAD /* Pods_Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A001B69472E7B469B6B57C2E /* Pods_Spotify.framework */; };
 /* End PBXBuildFile section */
@@ -69,6 +72,9 @@
 		9682D7BB209283AC0045344E /* ArtistTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtistTableViewCell.xib; sourceTree = "<group>"; };
 		9682D7BF209283C70045344E /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
 		9682D7C0209283C70045344E /* EmptyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableViewCell.xib; sourceTree = "<group>"; };
+		9682D7C3209287C40045344E /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		96CE00342092D5AC0067D9C8 /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
+		96CE00352092D5AC0067D9C8 /* AlbumTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumTableViewCell.xib; sourceTree = "<group>"; };
 		A001B69472E7B469B6B57C2E /* Pods_Spotify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spotify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -141,7 +147,6 @@
 				9682D7A4209279C80045344E /* Model */,
 				9682D79F209276540045344E /* Network */,
 				9682D77F2092755C0045344E /* AppDelegate.swift */,
-				9682D7812092755C0045344E /* ViewController.swift */,
 				9682D7832092755C0045344E /* Main.storyboard */,
 				9682D7862092755C0045344E /* Assets.xcassets */,
 				9682D7882092755C0045344E /* LaunchScreen.storyboard */,
@@ -172,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				9682D7AC20927E830045344E /* Artist.swift */,
+				9682D7C3209287C40045344E /* Album.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -190,6 +196,7 @@
 		9682D7AE209280820045344E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9682D7812092755C0045344E /* ViewController.swift */,
 				9682D7AF2092809A0045344E /* BaseControllers */,
 			);
 			path = Controllers;
@@ -218,6 +225,8 @@
 			children = (
 				9682D7BA209283AC0045344E /* ArtistTableViewCell.swift */,
 				9682D7BB209283AC0045344E /* ArtistTableViewCell.xib */,
+				96CE00342092D5AC0067D9C8 /* AlbumTableViewCell.swift */,
+				96CE00352092D5AC0067D9C8 /* AlbumTableViewCell.xib */,
 			);
 			path = Artist;
 			sourceTree = "<group>";
@@ -325,6 +334,7 @@
 				9682D7872092755C0045344E /* Assets.xcassets in Resources */,
 				9682D7BD209283AC0045344E /* ArtistTableViewCell.xib in Resources */,
 				9682D7852092755C0045344E /* Main.storyboard in Resources */,
+				96CE00372092D5AC0067D9C8 /* AlbumTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +376,7 @@
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -375,6 +386,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -459,6 +471,8 @@
 				9682D7802092755C0045344E /* AppDelegate.swift in Sources */,
 				9682D7BC209283AC0045344E /* ArtistTableViewCell.swift in Sources */,
 				9682D7A1209276690045344E /* SpotifyClient.swift in Sources */,
+				96CE00362092D5AC0067D9C8 /* AlbumTableViewCell.swift in Sources */,
+				9682D7C4209287C40045344E /* Album.swift in Sources */,
 				9682D7C1209283C70045344E /* EmptyTableViewCell.swift in Sources */,
 				9682D7AB20927A530045344E /* RealmHelper.swift in Sources */,
 				9682D7B3209280E90045344E /* BaseUIViewController.swift in Sources */,

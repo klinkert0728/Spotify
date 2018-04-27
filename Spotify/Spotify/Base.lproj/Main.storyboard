@@ -18,35 +18,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="UJv-PE-0HD">
-                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="8hh-H5-Sk9"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="tgT-90-et3"/>
-                                </connections>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="stD-w4-Do1">
                                 <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="xnY-bF-iqw">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="yyA-95-WIJ"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="UJv-PE-0HD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="1BI-t6-XHm"/>
-                            <constraint firstItem="stD-w4-Do1" firstAttribute="top" secondItem="UJv-PE-0HD" secondAttribute="bottom" id="5y0-Kk-k07"/>
-                            <constraint firstItem="UJv-PE-0HD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7Lb-Jl-qb2"/>
+                            <constraint firstItem="stD-w4-Do1" firstAttribute="top" secondItem="xnY-bF-iqw" secondAttribute="bottom" id="GWM-nn-81o"/>
+                            <constraint firstItem="xnY-bF-iqw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="SZb-rv-8bG"/>
+                            <constraint firstItem="xnY-bF-iqw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Sh0-cp-wdE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="stD-w4-Do1" secondAttribute="trailing" id="V0S-LB-dNa"/>
                             <constraint firstItem="stD-w4-Do1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Vbh-7K-2Kc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="stD-w4-Do1" secondAttribute="bottom" id="ajq-q0-4ux"/>
-                            <constraint firstItem="UJv-PE-0HD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ovH-HW-cd1"/>
+                            <constraint firstItem="xnY-bF-iqw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fXR-53-ucj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="8cG-y2-38b"/>
                     <connections>
+                        <outlet property="resultsTableView" destination="stD-w4-Do1" id="ihG-eT-5r0"/>
+                        <outlet property="searchBar" destination="xnY-bF-iqw" id="iDB-4P-SzE"/>
                         <outlet property="searchDisplayController" destination="zhY-6m-3zu" id="cxe-aX-Vhf"/>
                     </connections>
                 </viewController>
@@ -54,7 +53,6 @@
                 <searchDisplayController id="zhY-6m-3zu">
                     <connections>
                         <outlet property="delegate" destination="BYZ-38-t0r" id="KH5-VH-8qo"/>
-                        <outlet property="searchBar" destination="UJv-PE-0HD" id="ln2-mD-WEp"/>
                         <outlet property="searchContentsController" destination="BYZ-38-t0r" id="wsI-w7-aaI"/>
                         <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="fmp-es-4KS"/>
                         <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="QnS-mo-iJ8"/>
@@ -63,16 +61,19 @@
             </objects>
             <point key="canvasLocation" x="919" y="224"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Base Navigation View Controller-->
         <scene sceneID="1Ul-Wa-Ojv">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gTf-PI-zI8" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gTf-PI-zI8" customClass="BaseNavigationViewController" customModule="Spotify" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="b2f-wA-Jh9">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="colorNavBar" value="primary"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="uTf-ec-wPg"/>
                     </connections>

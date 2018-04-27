@@ -10,6 +10,16 @@ import Foundation
 import UIKit
 
 //MARK: - UIView
+
+extension Int {
+    func formatInt() -> String? {
+        let numberFormatter         = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        let formattedNumber         = numberFormatter.string(from: NSNumber(value:self))
+        return formattedNumber
+    }
+}
+
 extension UIView {
     
     

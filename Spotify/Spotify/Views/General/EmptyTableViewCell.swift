@@ -10,6 +10,8 @@ import UIKit
 
 class EmptyTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var emptyCellMessage: UILabel!
+    @IBOutlet weak var emptyCellImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +21,11 @@ class EmptyTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func configureEmptyCellForArtist() {
+        emptyCellImage.image    = UIImage(named:"search_artist")
+        emptyCellMessage.text   = "Search your favorite artiste above"
     }
     
 }
