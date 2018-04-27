@@ -32,9 +32,10 @@ class ViewController: BaseUIViewController {
     
     override func configureAppearance() {
         super.configureAppearance()
-        resultsTableView.estimatedRowHeight     = 100
-        resultsTableView.rowHeight              = UITableViewAutomaticDimension
-        resultsTableView.tableFooterView        = UIView()
+        resultsTableView.estimatedRowHeight         = 100
+        resultsTableView.rowHeight                  = UITableViewAutomaticDimension
+        resultsTableView.tableFooterView            = UIView()
+        title   = "Search for your favorite Artist"
     }
     
     //MARK: - Register Cell
@@ -45,10 +46,11 @@ class ViewController: BaseUIViewController {
     }
     
     fileprivate func searchByQuery(query:String) {
-        SVProgressHUD.show()
         Artist.getArtist(query: query, successCallback: { (resultOfArtist) in
+            self.artistResult.removeAll()
+            self.albums.removeAll()
             guard let fistArtist = resultOfArtist.first else {
-                SVProgressHUD.dismiss()
+                self.resultsTableView.reloadData()
                 return
             }
             Album.getArtistAlbum(artistId:fistArtist.id, successCallback: { (albums) in
@@ -137,6 +139,13 @@ extension ViewController: UITableViewDelegate,UITableViewDataSource {
     }
 }
 
+//MARK: scroll delegate
+extension ViewController:UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        searchBar.resignFirstResponder()
+    }
+}
+
 //MARK: SearchBar Delegate
 extension ViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -147,6 +156,21 @@ extension ViewController: UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         searchBar.showsCancelButton = true
         return true
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+         searchBar.showsCancelButton = false
+         searchBar.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).count > 3 {
+            guard let query = searchBar.text else {
+                SVProgressHUD.showInfo(withStatus: "Please enter a value before searching an artist")
+                return
+            }
+            searchByQuery(query: query)
+        }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

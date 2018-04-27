@@ -27,11 +27,15 @@ class AlbumTableViewCell: UITableViewCell {
     
     func configureAlbum(album:Album) {
         albumName.text  = album.name
-        albumImage.af_setImage(withURL: URL(string:album.albumImageUrl)!)
+       
         if album.availableCountriesArray.count > 5 {
             availableIn.text =  "Available in : " + album.availableCountriesArray.joined(separator: ",")
         }else {
             availableIn.isHidden = true
         }
+        guard let url = URL(string:album.albumImageUrl) else {
+            return
+        }
+        albumImage.af_setImage(withURL:url)
     }
 }

@@ -39,8 +39,12 @@ class ArtistTableViewCell: UITableViewCell {
         artistName.text = artist.name
        
         numberOfFollowers.text      = "Number of Followers: \(artist.numberOfFollowers.formatInt() ?? "")"
-        artistImage.af_setImage(withURL: URL(string:artist.artistImageUrl)!)
+        
         calculateStarRank(popularity: artist.popularity)
+        guard let url = URL(string:artist.artistImageUrl) else {
+            return
+        }
+        artistImage.af_setImage(withURL: url)
     }
     
     
