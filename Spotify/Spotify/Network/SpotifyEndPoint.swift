@@ -77,14 +77,14 @@ extension SpotifyEndPoint:SpotifyApiEndPoint {
     var customHeaders:[String:String]? {
         switch self {
         default:
-            return  ["Authorization": "Bearer BQC9n-1rSZbafWjmAIqeGyza0wg0uzYYi8uBbbxhtPY6fXUvVoEEdP8qtvKL5aggeGfG3GVNxIRccs8E5n3tc7rO2jNaVhzZIzFsPrCIr5Qzx4yaQc04H1xL3cTg22GRSrMoagz7zte93ZFv","Content-Type":"application/json"]
+            return  ["Authorization": "Bearer BQBUmmwKl_S-U2w1VaUNI96Z3_OqJ7BUPWxuxVaWp3AXWdnQdL0t6UoSuOp_qgAmmz9TUJa2V7pwVynshJxnMOJnR7gxNZF7ZPV5VJeoVFLgQ441MvbCLSrvX7LT5ri-WQDHs8nPkc2YL__p","Content-Type":"application/json"]
         }
     }
     
     var parameterEncoding:ParameterEncoding {
         
         switch self {
-        case .searchArtist(query: _):
+        case .searchArtist(query: _),.searchArtistAlbum(artistId: _):
             return URLEncoding.default
         default:
             return JSONEncoding.default
